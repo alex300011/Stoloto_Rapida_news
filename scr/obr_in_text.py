@@ -9,7 +9,7 @@ def loadfile():
     return l
 
 def savefile2():
-    MyFile = open('совпадения_from_Rapido_Stoloto.txt', 'w')
+    MyFile = open('совпаденияRapido.txt', 'w')
     for element in text1:
         MyFile.write(str(element))
         MyFile.write('\n')
@@ -135,5 +135,7 @@ for x in lst:
     print(f"комбинация {count} из {len(lst)} -- Для комбинации {x} всего совпадения {numall} из {len(lst)} возможных комбинаций")
     text1 = text1 +[['для комбинации:'] + [x] + ['Всего совпадений'] + [numall] + ['Список совпадений'] + [lst10]]
     print((time.time() - start_time), "seconds")
+
 print(text1)
+
 savefile2()
