@@ -64,7 +64,7 @@ text1 = []
 num = 0
 lst3 = []
 count = 0
-for x in lst:
+for x in lst[0:200]:
 
     #print(x[0])
     for y in lst:
@@ -128,12 +128,13 @@ for x in lst:
     lst10=[]
     for y in lst9:
         if x[7] in y:
-            lst10 = lst10 + [y]
-            numall += 1
-    #('100% Совпадения',numall,'lst10',lst10)
+            if x != y:
+                lst10 = lst10 + [y]
+                numall += 1
+    #print('100% Совпадения',len(lst10),numall,'lst10',lst10)
     count += 1
-    print(f"комбинация {count} из {len(lst)} -- Для комбинации {x} всего совпадения {numall} из {len(lst)} возможных комбинаций")
-    text1 = text1 +[['для комбинации:'] + [x] + ['Всего совпадений'] + [numall] + ['Список совпадений'] + [lst10]]
+    print(f"комбинация {count} из {len(lst)} -- Для комбинации {x} всего совпадения {len(lst10)} из {len(lst)} возможных комбинаций")
+    text1 = text1 +[['для комбинации:'] + [x] + ['Всего совпадений'] + [len(lst10)] + ['Список совпадений'] + [lst10]]
     print((time.time() - start_time), "seconds")
 
 print(text1)
