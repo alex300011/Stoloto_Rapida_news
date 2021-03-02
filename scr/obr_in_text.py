@@ -16,6 +16,12 @@ def savefile2():
     MyFile.close()
     print('saveFIle')
 
+def savefile3():
+    MyFile = open('совпаденияRapido1.txt', 'a')
+    MyFile.write(str(text1))
+    MyFile.write('\n')
+    MyFile.close()
+    print('saveFIle')
 
 print('----start----',start_time)
 l = loadfile()
@@ -64,79 +70,90 @@ text1 = []
 num = 0
 lst3 = []
 count = 0
-for x in lst[0:200]:
-
-    #print(x[0])
+#for x in lst[0:200]:
+#
+ #   #print(x[0])
+#    for y in lst:
+#        if x[0] in y:
+#            lst3 = lst3 + [y]
+#
+#    #print(lst3)
+#
+#    #print(x[1])
+#    lst4=[]
+#    for y in lst3:
+#        if x[1] in y:
+#            lst4 = lst4 + [y]
+#    #print('lst4',lst4)#
+#
+#    #print(x[2])
+#    lst5=[]
+#    for y in lst4:
+#        if x[2] in y:
+#            lst5 = lst5 + [y]
+#    #print('lst5',lst5)
+#
+#    #print(x[3])
+#    num = 0
+#    lst6=[]
+#    for y in lst5:
+#        if x[3] in y:
+#            lst6 = lst6 + [y]
+#            num += 1
+#    #print('all',num,'lst6',lst6)
+#
+#    #print(x[0], x[1], x[2], x[3], x[4])
+#    num = 0
+#    lst7=[]
+#    for y in lst6:
+#        if x[4] in y:
+#            lst7 = lst7 + [y]
+#            num += 1
+#    #print('all',num,'lst7',lst7)
+#
+#    #print(x[0], x[1], x[2], x[3], x[4], x[5])
+#    num = 0
+#    lst8=[]
+#    for y in lst7:
+#        if x[5] in y:
+#            lst8 = lst8 + [y]
+#            num += 1
+#    #print('all',num,'lst8',lst8)
+#
+#    #print(x[0], x[1], x[2], x[3], x[4], x[5], x[6])
+#    num = 0
+#    lst9=[]
+#    for y in lst8:
+#        if x[6] in y:
+#            lst9 = lst9 + [y]
+#            num += 1
+#    #print('all',num,'lst9',lst9)#
+#
+#    #print(x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7])
+#    numall = 0
+#    lst10=[]
+#    for y in lst9:
+#        if x[7] in y:
+#            if x != y:
+#                lst10 = lst10 + [y]
+#                numall += 1
+#    #print('100% Совпадения',len(lst10),numall,'lst10',lst10)
+#    count += 1
+#    print(f"комбинация {count} из {len(lst)} -- Для комбинации {x} всего совпадения {len(lst10)} из {len(lst)} возможных комбинаций")
+#    text1 = text1 +[['для комбинации:'] + [x] + ['Всего совпадений'] + [len(lst10)] + ['Список совпадений'] + [lst10]]
+#    print((time.time() - start_time), "seconds")
+for x in lst:
     for y in lst:
-        if x[0] in y:
-            lst3 = lst3 + [y]
-
-    #print(lst3)
-
-    #print(x[1])
-    lst4=[]
-    for y in lst3:
-        if x[1] in y:
-            lst4 = lst4 + [y]
-    #print('lst4',lst4)
-
-    #print(x[2])
-    lst5=[]
-    for y in lst4:
-        if x[2] in y:
-            lst5 = lst5 + [y]
-    #print('lst5',lst5)
-
-    #print(x[3])
-    num = 0
-    lst6=[]
-    for y in lst5:
-        if x[3] in y:
-            lst6 = lst6 + [y]
-            num += 1
-    #print('all',num,'lst6',lst6)
-
-    #print(x[0], x[1], x[2], x[3], x[4])
-    num = 0
-    lst7=[]
-    for y in lst6:
-        if x[4] in y:
-            lst7 = lst7 + [y]
-            num += 1
-    #print('all',num,'lst7',lst7)
-
-    #print(x[0], x[1], x[2], x[3], x[4], x[5])
-    num = 0
-    lst8=[]
-    for y in lst7:
-        if x[5] in y:
-            lst8 = lst8 + [y]
-            num += 1
-    #print('all',num,'lst8',lst8)
-
-    #print(x[0], x[1], x[2], x[3], x[4], x[5], x[6])
-    num = 0
-    lst9=[]
-    for y in lst8:
-        if x[6] in y:
-            lst9 = lst9 + [y]
-            num += 1
-    #print('all',num,'lst9',lst9)
-
-    #print(x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7])
-    numall = 0
-    lst10=[]
-    for y in lst9:
-        if x[7] in y:
-            if x != y:
-                lst10 = lst10 + [y]
-                numall += 1
-    #print('100% Совпадения',len(lst10),numall,'lst10',lst10)
-    count += 1
-    print(f"комбинация {count} из {len(lst)} -- Для комбинации {x} всего совпадения {len(lst10)} из {len(lst)} возможных комбинаций")
-    text1 = text1 +[['для комбинации:'] + [x] + ['Всего совпадений'] + [len(lst10)] + ['Список совпадений'] + [lst10]]
-    print((time.time() - start_time), "seconds")
-
+        if x != y:
+            z = (set(x)&set(y))
+            print(x,z,len(z))
+            if len(z)>=7:
+                text1.append(['START->',x,'<---->', y,'----->' ,z ,'--->', len(z),'<--END'])
+                count += 1
+    text1.append(["SOVPADENIY",count])
+    savefile3()
+    text1=[]
+    count = 0
 print(text1)
 
 savefile2()
