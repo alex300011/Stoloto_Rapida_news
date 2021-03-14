@@ -1,2 +1,2 @@
-"# Stoloto_Rapida" 
+"# Stoloto_Rapida" анализ тиражей
  в разработке
