@@ -2,6 +2,10 @@ import time
 start_time = time.time()
 l=[]
 text = []
+
+def get_data_from_site(): # тут должен быть парсер в будущем
+    pass
+
 def loadfile(): #Загрузка данных из файла.
     l = []
     with open('../from_stoloto_rapido2.0.txt', encoding="utf-8") as f:
@@ -29,7 +33,7 @@ def get_lst_from_file(): # Загрузка и обработка комбина
     print('l==', l)
     print('длинна списка = ', len(l))
     i = 0
-    while i != len(l):
+    while i != len(l): # чистка списка ---- Надо переделать ненравиться
         # for i in range(0,len(l)):
 
         if 'Суперприз' in l[i]:
