@@ -4,12 +4,12 @@ l=[]
 text = []
 def loadfile():
     l = []
-    with open('from_stoloto_rapido2.0.txt', encoding="utf-8") as f:
+    with open('../from_stoloto_rapido2.0.txt', encoding="utf-8") as f:
         l = f.read().splitlines()
     return l
 
 def savefile2():
-    MyFile = open('совпаденияRapido.txt', 'w')
+    MyFile = open('../совпаденияRapido.txt', 'w')
     for element in text1:
         MyFile.write(str(element))
         MyFile.write('\n')
@@ -17,7 +17,7 @@ def savefile2():
     print('saveFIle')
 
 def savefile3():
-    MyFile = open('совпаденияRapido1.txt', 'a')
+    MyFile = open('../совпаденияRapido1.txt', 'a')
     MyFile.write(str(text1))
     MyFile.write('\n')
     MyFile.close()

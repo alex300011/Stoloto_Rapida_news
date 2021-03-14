@@ -5,7 +5,7 @@ start_time = time.time()
 l=[]
 def loadfile():
     l = []
-    with open('тиражи1.txt') as f:
+    with open('../тиражи1.txt') as f:
         l = f.read().splitlines()
     return l
 
