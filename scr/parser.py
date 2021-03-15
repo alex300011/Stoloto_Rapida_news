@@ -11,23 +11,23 @@ from selenium import webdriver
 #button = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[5]/div[3]/span[1]")
 
 #button.click()
+def parser():
+    url = 'https://www.stoloto.ru/rapido2/archive'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    quotes1 = soup.find_all('div', class_='elem')
+    quotes = soup.find_all('span', class_='zone')
 
-url = 'https://www.stoloto.ru/rapido2/archive'
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'lxml')
-quotes1 = soup.find_all('div', class_='elem')
-quotes = soup.find_all('span', class_='zone')
+    #print('-->',quotes1)
+    #print(type(quotes1))
 
-print('-->',quotes1)
-print(type(quotes1))
+    paragraphs = []
 
-paragraphs = []
+    for x in quotes1:
+        paragraphs.append([str(x)])
 
-for x in quotes1:
-    paragraphs.append([str(x)])
-
-print(paragraphs)
-count =0
-for i in paragraphs:
-    print(count,i)
-    count += 1
+#print(paragraphs)
+    #count =0
+    #for i in paragraphs:
+        #print(count,i)
+        #count += 1

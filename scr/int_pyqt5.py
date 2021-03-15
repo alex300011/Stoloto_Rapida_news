@@ -1,14 +1,28 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QTableWidgetItem
-from main1 import *  # импорт нашего сгенерированного файла
-
 import sys
+from main1 import *  # импорт нашего сгенерированного файла
+import requests
+from bs4 import BeautifulSoup
 
-data = []
-data.append(('BMW', '2005'))
-data.append(('Audi', '2003'))
-data.append(('Volvo', '1990'))
-data.append(('Toyota', '2018'))
+
+def start():
+    url = 'https://www.stoloto.ru/rapido2/archive'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    quotes1 = soup.find_all('div', class_='elem')
+    quotes = soup.find_all('span', class_='zone')
+
+    # print('-->',quotes1)
+    # print(type(quotes1))
+
+    paragraphs = []
+
+    for x in quotes1:
+        paragraphs.append([str(x)])
+        #print(paragraphs)
+data = [(1,1),(2,2),(3,3)]
+
 
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -32,6 +46,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.setRowCount(3)
         # очистка таблицы при клике на кнопку.
         self.ui.pushButton.clicked.connect(self.clear)
+        # кнопка парсера
+        self.ui.pushButton_2.clicked.connect(self.buttonClicked1)
         # Кол-во рядов меняется в зависимости от значений в data.
         self.ui.tableWidget.setRowCount(len(data))
 
@@ -58,6 +74,9 @@ class mywindow(QtWidgets.QMainWindow):
         # 0 - Марка
         # 1 - Год выпуска
         self.ui.tableWidget.sortByColumn(1, QtCore.Qt.AscendingOrder)
+
+    def buttonClicked1(self):
+        self.textEdit.append(start())
 
     def clear(self):
         self.ui.tableWidget.clear()
